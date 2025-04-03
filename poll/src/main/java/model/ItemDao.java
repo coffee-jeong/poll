@@ -83,8 +83,5 @@ public class ItemDao {
 		conn.close();
 		
 		return list;
-	
-
 	}
-
 }

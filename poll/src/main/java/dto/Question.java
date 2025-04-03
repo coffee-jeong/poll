@@ -44,4 +44,8 @@ public class Question {
 	public void setType(int type) {
 		this.type = type;
 	}
+	public void setCreatedate(String string) {
+	
+		
+	}
 }

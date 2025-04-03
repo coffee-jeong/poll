@@ -71,9 +71,13 @@
 
 			        // 날짜 비교
 			        if (todayDate.before(startDate)) {
-			        	%>투표시작전<%
+	        	%>
+	        			투표시작전
+       			<%
 			        } else if (todayDate.after(endDate)) {
-			        	%>투표종료<%
+	        	%>
+	        			투표종료
+	        	<%
 			        } else {
 			        	%><a href="">[투표하기]</a><%
 			        }
@@ -83,13 +87,12 @@
 				<a href="/poll/deleteAction.jsp?qnum=<%=q.getNum()%>">[삭제]</a>
 			</td>
 			<td>
-				<a href="/poll/insertPollForm.jsp?qnum=<%=q.getNum()%>">
-			[수정하기]</a></td>
+				<a href="/poll/updatePollForm.jsp?qnum=<%=q.getNum()%>">[수정하기]</a></td>
 			<td>
 			<%
 				if(todayDate.after(endDate)) {
 			%>
-				[불가]
+					[불가]
 			<%
 				} else {		
 			%>
