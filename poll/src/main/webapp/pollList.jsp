@@ -37,17 +37,22 @@
 </head>
 <body>
 	<h1>설문리스트</h1>
+	<a href="/poll/insertPollForm.jsp">설문지 작성</a>
 	<!-- foreach문 ArrayList<Question> list 출력 title 
 	링크(startdate <= 오늘날짜 <= enddate) 투표시작전, 투표종료, 투표하기 -->
 	
 	<table border ="1">
 		<tr>
 			<th>NO</th>
-			<th>Title</th>
-			<th>Start Date</th>
-			<th>End Date</th>
-			<th>Type</th>
-			<th>Vote</th>
+			<th>투표제목</th>
+			<th>시작 시간</th>
+			<th>종료 시간</th>
+			<th>복수투표</th>
+			<th>투표</th>
+			<th>삭제</th>
+			<th>수정</th>
+			<th>종료일 수정</th>
+			<th>결과</th>
 		</tr>
 		<%
 			for(Question q : list) {
@@ -74,6 +79,25 @@
 			        }
 				%>
 			</td>
+			<td>
+				<a href="/poll/deleteAction.jsp?qnum=<%=q.getNum()%>">[삭제]</a>
+			</td>
+			<td>
+				<a href="/poll/insertPollForm.jsp?qnum=<%=q.getNum()%>">
+			[수정하기]</a></td>
+			<td>
+			<%
+				if(todayDate.after(endDate)) {
+			%>
+				[불가]
+			<%
+				} else {		
+			%>
+				<a href="/poll/">[수정]</a></td>
+			<%
+				}
+			%>
+			<td><a href="/poll/">[결과]</a></td>
 			</tr>
 		<%
 			}

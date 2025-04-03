@@ -38,8 +38,8 @@ public class QuestionDao {
 				question.setType(rs.getInt("type"));
 				list.add(question);
 			}
-
-		 return list;
+			conn.close();
+			return list;
 	}
 	
 	
@@ -65,7 +65,41 @@ public class QuestionDao {
 		if(rs.next()) {
 			pk = rs.getInt(1); //설렉트 절의 1번(순서를 적는다)  위의 max(num)값을 모르니 
 		}
+		conn.close();
 		return pk;
 	
+	}
+	// 삭제 
+	public boolean deleteQuestion(int qnum) throws ClassNotFoundException, SQLException {
+		boolean isDelete = false;
+		int row = 0;
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/poll", "root", "java1234");
+		String sql = "SELECT * FROM question q INNER JOIN (SELECT qnum, SUM(COUNT) FROM item GROUP BY qnum) t ON q.num = t.qnum";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt = conn.prepareStatement(sql);
+		System.out.println(stmt);
+		ResultSet rs = stmt.executeQuery();
+		
+		ItemDao itemDao = new ItemDao();
+		itemDao.deleteItem(qnum);
+		
+		sql = "DELETE FROM question WHERE num = ?";
+		
+		stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, qnum);
+		
+		row = stmt.executeUpdate();
+		if(row == 1) {
+			System.out.println("정상 삭제");
+			isDelete = true;
+		}
+		else {
+			System.out.println("비정상 삭제");
+		}
+		
+		conn.close();
+		
+		return isDelete;
 	}
 }
