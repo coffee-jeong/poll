@@ -34,15 +34,19 @@
 <head>
 <meta charset="UTF-8">
 <title>pollList</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 	<div>
 		<jsp:include page="/inc/nav.jsp"></jsp:include>
 	</div>
 
-	<h1>투표리스트</h1>
+	<h1 style="color: #115f71";>투표리스트</h1>
 
-	<table border ="1">
+	<table class="table table-dark table-striped">
 		<tr>
 			<th>NO</th>
 			<th>제목</th>
@@ -63,9 +67,7 @@
 			<td><%=q.getTitle()%></td>
 			<td><%=q.getStartdate()%></td>
 			<td><%=q.getEnddate()%></td>
-			<td>
-				<%=q.getType()%>
-			</td>
+			<td><%=q.getType()%></td>
 			<td>
 				<%
 					SimpleDateFormat now = new SimpleDateFormat("yyyy-MM-dd");

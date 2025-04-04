@@ -4,6 +4,10 @@
 <head>
 <meta charset="UTF-8">
 <title>insertPollForm</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 	<div>
@@ -12,9 +16,9 @@
 	
 	<h1>투표프로그램</h1>
 	<hr>
-	<h2>설문작성</h2>
+	<h2 style="color: #115f71";>설문작성</h2>
 	<form method="post" action="/poll/insertPollAction.jsp">
-		<table border="1">
+		<table class="table table-dark table-striped">
 			<tr>
 				<td>질문</td>
 				<td colspan="2">
