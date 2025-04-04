@@ -28,6 +28,10 @@
 <title>투표하기</title>
 </head>
 <body>
+	<div>
+		<jsp:include page="/inc/nav.jsp"></jsp:include>
+	</div>
+	
 	<h1>투표하기</h1>
 	<form action="/poll/updateItemAction.jsp" method="post">
 		<input type="hidden" name="qnum" value="<%=qnum%>">
@@ -35,7 +39,7 @@
 			<tr>
 				<td>
 					Q : <%=question.getTitle()%>
-					(<%=question.getType() == 1 ? "복수투표 가능" : "복수투표 불가" %>)
+					(<%=question.getType() == 1 ? "복수투표 불가" : "복수투표 가능" %>)
 				</td>
 			</tr>
 				<tr>

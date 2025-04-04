@@ -36,15 +36,16 @@
 <title>pollList</title>
 </head>
 <body>
-	<h1>설문리스트</h1>
-	<a href="/poll/insertPollForm.jsp">설문지 작성</a>
-	<!-- foreach문 ArrayList<Question> list 출력 title 
-	링크(startdate <= 오늘날짜 <= enddate) 투표시작전, 투표종료, 투표하기 -->
-	
+	<div>
+		<jsp:include page="/inc/nav.jsp"></jsp:include>
+	</div>
+
+	<h1>투표리스트</h1>
+
 	<table border ="1">
 		<tr>
 			<th>NO</th>
-			<th>투표제목</th>
+			<th>제목</th>
 			<th>시작 시간</th>
 			<th>종료 시간</th>
 			<th>복수투표</th>
@@ -62,7 +63,9 @@
 			<td><%=q.getTitle()%></td>
 			<td><%=q.getStartdate()%></td>
 			<td><%=q.getEnddate()%></td>
-			<td><%=q.getType()%></td>
+			<td>
+				<%=q.getType()%>
+			</td>
 			<td>
 				<%
 					SimpleDateFormat now = new SimpleDateFormat("yyyy-MM-dd");
@@ -96,7 +99,7 @@
 			<%
 				} else {		
 			%>
-				<a href="/poll/updateQuestionEnddateForm.jsp">[수정]</a></td>
+				<a href="/poll/updateQuestionEnddateForm.jsp?qnum=<%=q.getNum()%>">[수정]</a></td>
 			<%
 				}
 			%>

@@ -188,4 +188,36 @@ public class QuestionDao {
 		
 		 return q;
 	}
+	
+	// updateQeustionEnddate
+	public void updateEnddate(String enddate, int qnum) throws ClassNotFoundException, SQLException {
+	    int row = 0;
+	    Connection conn = null;
+	    PreparedStatement stmt = null;
+
+	    // JDBC 드라이버 로드
+	    Class.forName("com.mysql.cj.jdbc.Driver");
+
+	    // SQL 쿼리 준비
+	    String sql = "UPDATE question SET enddate = ? WHERE num = ?";
+	    conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/poll", "root", "java1234");
+	    stmt = conn.prepareStatement(sql);
+
+	    // 파라미터 설정
+	    stmt.setString(1, enddate);  // enddate 값을 쿼리의 첫 번째 자리로 설정
+	    stmt.setInt(2, qnum);        // qnum 값을 쿼리의 두 번째 자리로 설정
+
+	    // 업데이트 실행
+	    row = stmt.executeUpdate();
+
+	    if (row == 1) {
+	        System.out.println("정상 수정");
+	    } else {
+	        System.out.println("비정상 수정");
+	    }
+
+	    conn.close();
+	}
+
+
 }

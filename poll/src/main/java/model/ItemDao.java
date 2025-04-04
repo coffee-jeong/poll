@@ -61,7 +61,7 @@ public class ItemDao {
 
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		
-		String sql = "SELECT qnum, inum, content, count FROM item WHERE qnum = ?";
+		String sql = "SELECT * FROM item WHERE qnum = ?";
 		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/poll","root","java1234");
 		
 		stmt = conn.prepareStatement(sql);
@@ -109,6 +109,7 @@ public class ItemDao {
 		return list;
 	}
 	
+	
 	public void updateItemCountPlus(int qnum, int inum) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection conn = null;
@@ -126,6 +127,7 @@ public class ItemDao {
 		}
 	}
 	
+	// qnum으로 투표 수 총합 구하기
 	public int selectItemCountbyQnum(int qnum) throws ClassNotFoundException, SQLException {
 		int count = 0;
 		Class.forName("com.mysql.cj.jdbc.Driver");
