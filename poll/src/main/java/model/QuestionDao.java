@@ -163,4 +163,29 @@ public class QuestionDao {
 		
 		conn.close();
 	}
+	
+	public Question selectQuestionOne(int num) throws ClassNotFoundException, SQLException {
+		Question q = null;
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		String sql = "select * from question where num = ?";
+		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/poll","root","java1234");
+		stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, num);
+		rs = stmt.executeQuery();
+		if(rs.next()) {
+			q = new Question();
+			q.setNum(num);
+			q.setTitle("title");
+			q.setStartdate(rs.getString("startdate"));
+			q.setEnddate(rs.getString("enddate"));
+			q.setStartdate(rs.getString("startdate"));
+			q.setType(rs.getInt("type"));
+		}
+		
+		
+		 return q;
+	}
 }

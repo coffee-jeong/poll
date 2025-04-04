@@ -79,7 +79,7 @@
 	        			투표종료
 	        	<%
 			        } else {
-			        	%><a href="">[투표하기]</a><%
+			        	%><a href="/poll/updateItemForm.jsp?qnum=<%=q.getNum()%>">[투표하기]</a><%
 			        }
 				%>
 			</td>
@@ -89,18 +89,18 @@
 			<td>
 				<a href="/poll/updatePollForm.jsp?qnum=<%=q.getNum()%>">[수정하기]</a></td>
 			<td>
-			<%
+			<% // 종료일 수정
 				if(todayDate.after(endDate)) {
 			%>
 					[불가]
 			<%
 				} else {		
 			%>
-				<a href="/poll/">[수정]</a></td>
+				<a href="/poll/updateQuestionEnddateForm.jsp">[수정]</a></td>
 			<%
 				}
 			%>
-			<td><a href="/poll/">[결과]</a></td>
+			<td><a href="/poll/questionOneResult.jsp?qnum=<%=q.getNum()%>">[결과]</a></td>
 			</tr>
 		<%
 			}
