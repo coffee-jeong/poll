@@ -12,7 +12,7 @@
 			<a href="/poll/pollList.jsp">투표(설문)</a>
 		</li>
 		<li>
-			<a href="/poll/boardList.jsp">계층형 계시판</a>
+			<a href="/poll/board/boardList.jsp">계층형 계시판</a>
 		</li>
 	</ul>
 </body>
