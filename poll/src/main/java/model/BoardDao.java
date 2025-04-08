@@ -13,22 +13,26 @@ import dto.Paging;
 
 public class BoardDao {
 	
-	public void deleteBoard(int num) throws ClassNotFoundException, SQLException {
-		int row = 0;
+	public void deleteBoard(int num, int ref) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/poll","root","java1234");
+		conn.setAutoCommit(false);  // executeUpdate()시마다 자동 커밋기능을 false
 		String sql = "DELETE FROM board WHERE num = ?";
 		stmt = conn.prepareStatement(sql);
 		stmt.setInt(1, num);
 		
-		row = stmt.executeUpdate();
+		int row = stmt.executeUpdate();
+		
+		// 본 게시글 삭제시 답글의 subject를 본 게시글 삭제로 변경
 		if(row == 1) {
-			System.out.println("정상 삭제");
-		}
-		else {
-			System.out.println("비정상 삭제");
+		PreparedStatement stmt2 = null;
+		String sql2 = "update board set subject = '상위 게시글이 삭제된 글입니다' where ref =?";
+		stmt2 = conn.prepareStatement(sql2);
+		stmt2.setInt(1, ref);
+	    int row2 = stmt2.executeUpdate();
+	    conn.commit();
 		}
 		
 		conn.close();
@@ -49,13 +53,6 @@ public class BoardDao {
 		stmt.setInt(5, pass);
 		
 		row = stmt.executeUpdate();
-		
-		if(row == 1) {
-			System.out.println("정상 수정");
-		}
-		else {
-			System.out.println("비정상 수정");
-		}
 		
 		conn.close();
 

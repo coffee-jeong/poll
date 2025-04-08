@@ -76,6 +76,7 @@
 	<% int prevPage = (currentPage > 1) ? currentPage - 1 : 1; %>
     <% int nextPage = currentPage + 1; %>
     <a href="?currentPage=<%=prevPage%>">이전</a>
+    <%=currentPage%>
     <a href="?currentPage=<%=nextPage%>">다음</a>
 	
 </body>
