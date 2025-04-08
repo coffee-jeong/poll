@@ -16,16 +16,16 @@
 	
 	<h1>글 입력</h1>
 	<form method="post" action="/poll/board/insertBoardAction.jsp">
-		<table class="table table-stripep">
-			<tr>
+		<table class="table">
+			<tr class="table-primary">
 				<td>name</td>
 				<td><input type="text" name="name"></td>
 			</tr>
-			<tr>
+			<tr class="table-success">
 				<td>subject</td>
 				<td><input type="text" name="subject"></td>
 			</tr>
-			<tr>
+			<tr class="table-danger">
 				<td>content</td>
 				<td><textarea name="content" rows="5" cols="50"></textarea></td>
 			</tr>
@@ -34,7 +34,7 @@
 				<td><input type="password" name="pass"></td>
 			</tr>
 		</table>
-		<button type="submit">글쓰기</button>
+		<button type="submit" class="btn btn-primary">글쓰기</button>
 	</form>
 </body>
 </html>

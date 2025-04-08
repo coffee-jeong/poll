@@ -8,8 +8,15 @@
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 	}
 	
+	int rowPerPage = 10;
+	Paging paging = new Paging();
+	paging.setCurrentPage(currentPage);
+	paging.setRowPerPage(rowPerPage);
+	
 	BoardDao boardDao = new BoardDao();
 	Paging p = new Paging();
+	QuestionDao questionDao = new QuestionDao();
+	
 	p.setCurrentPage(currentPage);
 	p.setRowPerPage(10);
 	ArrayList<Board> list = boardDao.selectBoardList(p);
@@ -27,12 +34,12 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-	<h1>BoardList</h1>
-	
 	<!-- nav.jsp 인클루드 -->
 	<div>
 		<jsp:include page="/inc/nav.jsp"></jsp:include>
 	</div>
+	
+	<h1>BoardList</h1>
 
 	<!-- boardlist table... -->
 	<table class="table table-striped">
@@ -66,5 +73,10 @@
 			%>
 		</tbody>
 	</table>
+	<% int prevPage = (currentPage > 1) ? currentPage - 1 : 1; %>
+    <% int nextPage = currentPage + 1; %>
+    <a href="?currentPage=<%=prevPage%>">이전</a>
+    <a href="?currentPage=<%=nextPage%>">다음</a>
+	
 </body>
 </html>

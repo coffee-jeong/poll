@@ -19,21 +19,21 @@
 	
 	<h1>글 수정</h1>
 	<form method="post" action="/poll/board/updateBoardAction.jsp">
-		<table class="table table-stripep">
+		<table class="table">
 			<tr>
 				<td>num</td>
 				<td><input type="text" name="num" value="<%=num%>" readonly></td>
 			</tr>
-			<tr>
+			<tr class="table-primary">
 				<td>name</td>
 				<td><input type="text" name="name"></td>
 			</tr>
-			<tr>
+			<tr class="table-success">
 				<td>subject</td>
 				<td><input type="text" name="subject"></td>
 			</tr>
-			<tr>
-				<td>content</td>
+			<tr class="table-danger">
+				<td >content</td>
 				<td><textarea name="content" rows="5" cols="50"></textarea></td>
 			</tr>
 			<tr>
@@ -41,7 +41,7 @@
 				<td><input type="password" name="pass"></td>
 			</tr>
 		</table>
-		<button type="submit">글수정</button>
+		<button type="submit" class="btn btn-info">글수정</button>
 	</form>
 </body>
 </html>

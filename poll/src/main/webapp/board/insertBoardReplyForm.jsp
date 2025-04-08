@@ -23,28 +23,28 @@
 	
 	<h1>글 입력</h1>
 	<form method="post" action="/poll/board/insertBoardReplyAction.jsp">
-		<table class="table table-stripep">
-			<tr>
+		<table class="table">
+			<tr class="table-warning">
 				<td>부모 ref와 동일</td>
 				<td><input type="text" name="ref" value="<%=ref%>" readonly></td>
 			</tr>
-			<tr>
+			<tr class="table-info">
 				<td>부모 pos + 1</td>
 				<td><input type="text" name="pos" value="<%=pos%>" readonly></td>
 			</tr>
-			<tr>
+			<tr class="table-active">
 				<td>부모 depth + 1</td>
 				<td><input type="text" name="depth" value="<%=depth%>" readonly></td>
 			</tr>
-			<tr>
+			<tr class="table-primary">
 				<td>name</td>
 				<td><input type="text" name="name"></td>
 			</tr>
-			<tr>
+			<tr class="table-success">
 				<td>subject</td>
 				<td><input type="text" name="subject"></td>
 			</tr>
-			<tr>
+			<tr class="table-danger">
 				<td>content</td>
 				<td><textarea name="content" rows="5" cols="50"></textarea></td>
 			</tr>
@@ -53,7 +53,7 @@
 				<td><input type="password" name="pass"></td>
 			</tr>
 		</table>
-		<button type="submit">댓글쓰기</button>
+		<button type="submit" class="btn btn-secondary">댓글쓰기</button>
 	</form>
 </body>
 </html>

@@ -13,6 +13,27 @@ import dto.Paging;
 
 public class BoardDao {
 	
+	public void deleteBoard(int num) throws ClassNotFoundException, SQLException {
+		int row = 0;
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/poll","root","java1234");
+		String sql = "DELETE FROM board WHERE num = ?";
+		stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, num);
+		
+		row = stmt.executeUpdate();
+		if(row == 1) {
+			System.out.println("정상 삭제");
+		}
+		else {
+			System.out.println("비정상 삭제");
+		}
+		
+		conn.close();
+	}
+	
 	public void updateBoard(String name, String subject, String content, int num, int pass) throws ClassNotFoundException, SQLException {
 		int row = 0;
 		Class.forName("com.mysql.cj.jdbc.Driver");
@@ -37,8 +58,7 @@ public class BoardDao {
 		}
 		
 		conn.close();
-		
-		
+
 	}
 	
 	// 답글 입력

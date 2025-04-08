@@ -20,51 +20,56 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body class = "container">
-	<h1>board one</h1>
-	<table class = "table table-striped">
-		<tr>
-			<td>num</td>
-			<td><%=b.getNum()%></td>
-		</tr>
-		<tr>
-			<td>name</td>
-			<td><%=b.getName()%></td>
-		</tr>
-		<tr>
-			<td>subject</td>
-			<td><%=b.getSubject()%></td>
-		</tr>
-		<tr>
-			<td>content</td>
-			<td><%=b.getContent()%></td>
-		</tr>
-		<tr>
-			<td>pos</td>
-			<td><%=b.getPos()%></td>
-		</tr>
-		<tr>
-			<td>ref</td>
-			<td><%=b.getRef()%></td>
-		</tr>
-		<tr>
-			<td>depth</td>
-			<td><%=b.getDepth()%></td>
-		</tr>
-		<tr>
-			<td>regdate</td>
-			<td><%=b.getRegdate()%></td>
-		</tr>
-		<tr>
-			<td>ip</td>
-			<td><%=b.getIp()%></td>
-		</tr>
-		<tr>
-			<td>count</td>
-			<td><%=b.getCount()%></td>
-		</tr>
-	</table>
-	<a href="/poll/board/updateBoardForm.jsp?num=<%=b.getNum()%>">수정</a>
-	<a href="/poll/board/deleteAction.jsp">삭제</a>
-	<a href="/poll/board/insertBoardReplyForm.jsp?ref=<%=b.getRef()%>&pos=<%=b.getPos()%>&depth=<%=b.getDepth()%>">답글달기</a>
+	<div>
+		<jsp:include page="/inc/nav.jsp"></jsp:include>
+	</div>
+	<div class="container mt-3">
+		<h1>board one</h1>
+		<table class = "table">
+			<tr>
+				<td>num</td>
+				<td><%=b.getNum()%></td>
+			</tr>
+			<tr class="table-primary">
+				<td>name</td>
+				<td><%=b.getName()%></td>
+			</tr>
+			<tr class="table-success">
+				<td>subject</td>
+				<td><%=b.getSubject()%></td>
+			</tr>
+			<tr class="table-danger">
+				<td>content</td>
+				<td><%=b.getContent()%></td>
+			</tr>
+			<tr class="table-info">
+				<td>pos</td>
+				<td><%=b.getPos()%></td>
+			</tr>
+			<tr class="table-warning">
+				<td>ref</td>
+				<td><%=b.getRef()%></td>
+			</tr>
+			<tr class="table-active">
+				<td>depth</td>
+				<td><%=b.getDepth()%></td>
+			</tr>
+			<tr class="table-secondary">
+				<td>regdate</td>
+				<td><%=b.getRegdate()%></td>
+			</tr>
+			<tr class="table-light">
+				<td>ip</td>
+				<td><%=b.getIp()%></td>
+			</tr>
+			<tr class="table-dark">
+				<td>count</td>
+				<td><%=b.getCount()%></td>
+			</tr>
+		</table>
+		<a href="/poll/board/updateBoardForm.jsp?num=<%=b.getNum()%>">수정</a>
+		<a href="/poll/board/deleteBoardAction.jsp?num=<%=b.getNum()%>">삭제</a>
+		<a href="/poll/board/insertBoardReplyForm.jsp?ref=<%=b.getRef()%>&pos=<%=b.getPos()%>&depth=<%=b.getDepth()%>">답글달기</a>
+	</div>
 </body>
 </html>
