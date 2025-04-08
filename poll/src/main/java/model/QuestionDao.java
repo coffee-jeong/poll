@@ -15,7 +15,7 @@ import dto.Question;
 public class QuestionDao {
 	public ArrayList<Question> selectQuestionList(Paging p) throws ClassNotFoundException, SQLException {
 		 ArrayList<Question> list = new  ArrayList<>();
-		 Class.forName("com.mysql.cj.jdbc.Driver");
+		 	Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection conn = null;
 			PreparedStatement stmt = null;
 			ResultSet rs = null;
