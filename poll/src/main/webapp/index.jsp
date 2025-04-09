@@ -14,6 +14,9 @@
 		<li>
 			<a href="/poll/board/boardList.jsp">계층형 계시판</a>
 		</li>
+		<li>
+			<a href="/poll/imageBoard/imageBoardList.jsp">이미지 계시판</a>
+		</li>
 	</ul>
 </body>
 </html>
